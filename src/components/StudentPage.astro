@@ -1,25 +1,125 @@
 ---
-const { name, image, favorite_emoji, github_permalink, github_profile, codepen_profile,bio } = Astro.props;
+const { name, image, favorite_emoji, github_permalink, github_profile, codepen_profile, bio } = Astro.props;
 ---
+
+<a class="back-to-home" href="../">Back to home</a>
+
+<article class="student-page">
+  <img src={image} alt={name} />
+
+  <h1>
+    <span>{favorite_emoji}</span> {name}
+  </h1>
+
+  <p>{bio}</p>
+
+  <nav>
+    <a href={codepen_profile} target="_blank" rel="noopener">CodePen</a>
+    <a href={github_profile} target="_blank" rel="noopener">GitHub</a>
+    <a href={github_permalink} target="_blank" rel="noopener">Portfolio</a>
+  </nav>
+</article>
+
 <style>
   .back-to-home {
-    background: pink;
-    padding: 1.5em;
-    border-radius: 0.5em;
-    border: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+
+    background: var(--soft-white);
+    color: var(--moss);
+
+    padding: 0.8rem 1.2rem;
+
+    border-radius: 999px;
+    border: 1px solid rgba(110, 123, 95, 0.25);
+
+    text-decoration: none;
+    font-weight: 700;
+
+    box-shadow: var(--shadow);
+
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .back-to-home:hover {
+    background: var(--moss);
+    color: var(--soft-white);
+  }
+
+  .student-page {
+    width: min(760px, 100%);
+    margin: 0 auto;
+
+    display: grid;
+    gap: 1.25rem;
+
+    background: rgba(255, 253, 248, 0.92);
+
+    border-radius: var(--radius);
+    padding: 1.5rem;
+
+    border: 1px solid rgba(110, 123, 95, 0.2);
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+  }
+
+  .student-page::before {
+    content: "❀";
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  .student-page img {
+    width: 100%;
+    max-height: 420px;
+
+    object-fit: cover;
+
+    border-radius: calc(var(--radius) - 0.4rem);
+
+    border: 1px solid rgba(110, 123, 95, 0.2);
+  }
+
+  .student-page h1 {
+    text-align: left;
+    margin-bottom: 0;
+    color: var(--moss);
+  }
+
+  .student-page nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .student-page nav a {
+    text-decoration: none;
+
+    background: var(--cream);
+    color: var(--moss);
+
+    border: 1px solid rgba(110, 123, 95, 0.2);
+
+    border-radius: 999px;
+
+    padding: 0.5rem 0.8rem;
+
+    font-weight: 700;
+  }
+
+  .student-page nav a:hover {
+    background: var(--moss);
+    color: var(--soft-white);
+  }
+
+  .student-page p {
+    line-height: 1.7;
+    font-size: 1.05rem;
   }
 </style>
-
-<button onclick="window.location.href = '/' " class="back-to-home">Back to Home</button>
-
-
-<img src={image} alt={name} />
-<h1><span>{favorite_emoji}</span> {name}</h1>
-<nav>
-  <a href={github_permalink} target="_blank" rel="noopener">Portfolio</a>
-  <a href={github_profile} target="_blank" rel="noopener">GitHub</a>
-  <a href={codepen_profile} target="_blank" rel="noopener">CodePen</a>
-</nav>
-<p>
-{bio}
-</p>

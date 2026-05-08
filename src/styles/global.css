@@ -1,16 +1,60 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+:root {
+  --cream: #f8f4ea;
+  --sage: #a8b59a;
+  --moss: #6e7b5f;
+  --gold: #d6b15f;
+  --brown: #4e4339;
+  --soft-white: #fffdf8;
+
+  --radius: 1.25rem;
+  --shadow: 0 10px 30px rgba(78, 67, 57, 0.12);
+}
 
 body {
+  min-height: 100vh;
   padding: 2rem;
+  font-family: "Quicksand", sans-serif;
+  color: var(--brown);
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(214, 177, 95, 0.18),
+      transparent 28%),
+    radial-gradient(circle at bottom right,
+      rgba(168, 181, 154, 0.18),
+      transparent 30%),
+    var(--cream);
 }
 
 h1 {
+  text-align: center;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--moss);
+  margin-bottom: 2.5rem;
+  font-size: clamp(2rem, 5vw, 4rem);
 }
 
 main {
+  width: min(1150px, 100%);
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  gap: 1.5rem;
+}
+
+footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--moss);
+  opacity: 0.8;
+  font-size: 0.9rem;
 }
